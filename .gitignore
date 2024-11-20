@@ -37,4 +37,5 @@ out/
 .vscode/
 
 ### Sensitive ###
-src/main/resources/application.yml
+application.yml
+data.sql
