@@ -32,12 +32,12 @@ public class Course extends BaseTimeEntity {
     private User creator;
 
     private int duration;
-    private String describe;
+    private String description;
 
     @Builder
-    public Course(User creator, int duration, String describe) {
+    public Course(User creator, int duration, String description) {
         this.creator = creator;
         this.duration = duration;
-        this.describe = describe;
+        this.description = description;
     }
 }
