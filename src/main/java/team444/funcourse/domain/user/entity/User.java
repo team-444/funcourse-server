@@ -2,6 +2,8 @@ package team444.funcourse.domain.user.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,11 +28,14 @@ public class User extends BaseTimeEntity {
     private String email;
     private String password;
     private String nickname;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     @Builder
     public User(String email, String password, String nickname) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
+        this.role = UserRole.USER;
     }
 }
