@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +20,8 @@ import team444.funcourse.domain.place.entity.Place;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "spots")
+@Table(name = "spots", uniqueConstraints = @UniqueConstraint(columnNames = {
+    "course_id", "daySequence", "placeSequence"}))
 public class Spot {
 
     @Id
@@ -40,11 +42,14 @@ public class Spot {
     private String memo;
 
     @Builder
-    public Spot(Course course, Place place, int daySequence, int placeSequence, String memo) {
-        this.course = course;
+    public Spot(Place place, int daySequence, int placeSequence, String memo) {
         this.place = place;
         this.daySequence = daySequence;
         this.placeSequence = placeSequence;
         this.memo = memo;
+    }
+
+    public void relateCourse(Course course) {
+        this.course = course;
     }
 }
