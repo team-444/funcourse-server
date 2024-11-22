@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team444.funcourse.domain.user.dto.CreateUserRequest;
 import team444.funcourse.domain.user.entity.User;
+import team444.funcourse.domain.user.entity.UserRole;
 import team444.funcourse.domain.user.service.UserService;
 
 @Service
@@ -22,6 +23,7 @@ public class AuthService {
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
             .nickname(request.getNickname())
+            .role(UserRole.USER)
             .build();
         userService.saveUser(user);
     }
