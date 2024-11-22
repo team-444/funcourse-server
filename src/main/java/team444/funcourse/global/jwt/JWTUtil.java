@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class JWTUtil {
 
     private SecretKey secretKey;
-    private static final long ACCESS_TOKEN_EXPIRATION = 1000 * 60;
+    private static final long ACCESS_TOKEN_EXPIRATION = 1000 * 60 * 10;
 
     public JWTUtil(@Value("${spring.jwt.secret}") String secretKey) {
         this.secretKey = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8),
